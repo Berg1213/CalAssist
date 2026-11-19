@@ -5,6 +5,7 @@ CREATE TABLE todo(
   name VARCHAR(255) NOT NULL,
   due_date DATE,
   due_time TIME,
+  status BOOLEAN,
   completed_at TIMESTAMPTZ,
   raw_input TEXT,
   created_at TIMESTAMPTZ NOT NULL DEFAULT now()
