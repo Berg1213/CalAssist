@@ -2,10 +2,14 @@ CREATE DATABASE calassist;
 
 CREATE TABLE todo(
   todo_id SERIAL PRIMARY KEY,
+  goal_id VARCHAR(255) REFERENCES goal (name),
   name VARCHAR(255) NOT NULL,
   due_date DATE,
   due_time TIME,
-  status BOOLEAN,
+  status VARCHAR(50) NOT NULL DEFAULT "not_started"
+    check(status IN ("not_started", "active", "completed", "paused", "abandoned")),
+  notes TEXT,
+
   completed_at TIMESTAMPTZ,
   raw_input TEXT,
   created_at TIMESTAMPTZ NOT NULL DEFAULT now()
