@@ -2,7 +2,7 @@ CREATE DATABASE calassist;
 
 CREATE TABLE todo(
   todo_id SERIAL PRIMARY KEY,
-  goal_id VARCHAR(255) REFERENCES goal (name),
+  goal_id INTEGER REFERENCES goal (goal_id),
   name VARCHAR(255) NOT NULL,
   due_date DATE,
   due_time TIME,
