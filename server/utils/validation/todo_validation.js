@@ -58,4 +58,30 @@ function validateTodoInput(body) {
   return errors;
 }
 
-module.exports = {statuses, isValidTime, isValidDate, isValidId, isValidStatus, validateTodoInput};
+function validateTodoList(query) {
+  const errors = [];
+  
+  if (query.start != null && !isValidDate(query.start)) {
+    errors.push('start must be a valid date (YYYY-MM-DD)');
+  }
+
+  if (query.end != null && !isValidDate(query.end)) {
+    errors.push('end must be a valid date (YYYY-MM-DD)');
+  }
+
+  if (query.end < query.start) {
+    errors.push('end must be a date after start');
+  }
+
+  if (query.goal_id != null && !isValidId(query.goal_id)) {
+    errors.push('invalid goal');
+  }
+
+  if (query.status != null && !isValidStatus(query.status)) {
+    errors.push('invalid status');
+  }
+
+  return errors;
+}
+
+module.exports = {statuses, isValidTime, isValidDate, isValidId, isValidStatus, validateTodoInput, validateTodoList};
