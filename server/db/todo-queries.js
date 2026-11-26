@@ -64,9 +64,6 @@ async function deleteTodo(id) {
 }
 
 module.exports = {
-  listTodosWithGoal,
-  getTodoWithGoal,
-  createTodo,
-  updateTodo,
-  deleteTodo,
+  listTodosWithGoal, getTodoWithGoal, createTodo,
+  updateTodo, deleteTodo,
 };
